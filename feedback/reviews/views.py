@@ -10,13 +10,22 @@ def review(request):
         form = ReviewForm(request.POST)
 
         if form.is_valid():
-            review = Review(
-                first_name=form.cleaned_data['first_name'],
-                last_name=form.cleaned_data['last_name'],
-                review=form.cleaned_data['review'],
-                rating=form.cleaned_data['rating']
-            )
-            review.save()
+            form.save()
+            return HttpResponseRedirect("/thank-you")
+    else:
+        form = ReviewForm()
+
+    return render(request, "reviews/review.html", {
+        "form": form
+    })
+
+def update_review(request, id):
+    if request.method == 'POST':
+        existing_entry = Review.objects.get(pk=id)
+        form = ReviewForm(request.POST, instance=existing_entry)
+
+        if form.is_valid():
+            form.save()
             return HttpResponseRedirect("/thank-you")
     else:
         form = ReviewForm()
