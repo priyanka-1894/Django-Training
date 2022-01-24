@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Review Detail
+{% endblock %}
+
+{% block css_files %}
+    {% comment %} <link rel="stylesheet" href="{% static "reviews/styles.css" %}" /> {% endcomment %}
+{% endblock %}
+
+{% block content %}
+    {% comment %} <h1>{{ object.first_name }} {{ object.last_name }}</h1> {% endcomment %}
+    <h1>{{ review.first_name }} {{ review.last_name }}</h1>
+    <p>Rating: {{ review.rating }}</p>
+    <p>{{ review.review }}</p>
+{% endblock %}

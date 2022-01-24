@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    All Reviews
+{% endblock %}
+
+{% block css_files %}
+    {% comment %} <link rel="stylesheet" href="{% static "reviews/styles.css" %}" /> {% endcomment %}
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for review in all_reviews %}
+            <li>{{ review.first_name }} {{ review.last_name }} ({{ review.rating }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
